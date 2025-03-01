@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplaces</title>
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="/static/style.css" />       
+</head>
+<body>
+   
+    <nav>
+        <a href="#" class="active" onclick="showCategory('iso')">ISO</a>
+        <a href="#" onclick="showCategory('template')">Templates</a>
+        <a href="#" onclick="showCategory('lxc')">LXC</a>
+    </nav>
+
+    <!-- <h1>Application Ready To Use</h1> -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+          <img src="images/logo.png" alt="logo" />
+          <h2>Apps</h2>
+        </div>
+        <ul class="sidebar-links">
+          
+          <li>
+            <a href="#">
+              <span class="material-symbols-outlined"> database </span>Database</a>
+          </li>
+          <li>
+            <a href="#"><span class="material-symbols-outlined"> overview </span>Operating System</a>
+          </li>
+          <li>
+            <a href="#"><span class="material-symbols-outlined">monitoring </span>Monitoring Tools</a>
+          </li>
+        
+          <li>
+            <a href="#"><span class="material-symbols-outlined"> folder </span>Projects</a>
+          </li>
+          <li>
+            <a href="#"><span class="material-symbols-outlined"> groups </span>Groups</a>
+          </li>
+          <li>
+            <a href="#"><span class="material-symbols-outlined"> move_up </span>Transfer</a>
+          </li>
+          <li>
+            <a href="#"><span class="material-symbols-outlined"> flag </span>All Reports</a>
+          </li>
+          <li>
+            <a href="#"><span class="material-symbols-outlined"> account_circle </span>Profile</a>
+          </li>
+          <li>
+            <a href="#"><span class="material-symbols-outlined"> settings </span>Settings</a>
+          </li>
+          <li>
+            <a href="#"><span class="material-symbols-outlined"> logout </span>Logout</a>
+          </li>
+        </ul>
+        
+      </aside>
+
+    <div id="content" class="container"></div>
+
+    <script>
+        let currentCategory = 'iso';
+
+        function showCategory(category) {
+            currentCategory = category;
+            updateMenu();
+            updateContent();
+        }
+
+        function updateMenu() {
+            const links = document.querySelectorAll('nav a');
+            links.forEach(link => {
+                link.classList.remove('active');
+                if (link.innerText.toLowerCase() === currentCategory) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        function updateContent() {
+            const content = document.getElementById('content');
+            content.innerHTML = '';
+
+            let data = [];
+            if (currentCategory === 'iso') {
+                data = [
+                    { name: 'MySQL', file: 'mysql.iso', img: '/static/images/development+logo+mysql+icon-1320184807686758112.png' },
+                    { name: 'MongoDB', file: 'mongo.iso', img: '/static/images/download.jpeg' },
+                    { name: 'Django', file: 'django.iso', img: '/static/images/download.png' },
+                    { name: 'Ubuntu', file: 'ubunto.iso', img: '/static/images/ubuntu.png' },
+                    { name: 'GitLab', file: 'gitlab.iso', img: '/static/images/GitLab_icon.svg.png' },
+                    { name: 'MariaDB', file: '198', img: '/static/images/maria.jpeg' },
+                    { name: 'MYSQL', file: '209', img: '/static/images/development+logo+mysql+icon-1320184807686758112.png' },
+                    { name: 'ubuntu 24.04', file: '166', img: '/static/images/ubuntu.png' }
+                ];
+            } else if (currentCategory === 'template') {
+                data = [
+                    { name: 'MariaDB', file: '198', img: '/static/images/maria.jpeg' },
+                    { name: 'MYSQL', file: '209', img: '/static/images/development+logo+mysql+icon-1320184807686758112.png' },
+                    { name: 'ubuntu 24.04', file: '166', img: '/static/images/ubuntu.png' },
+                    { name: 'GitLab', file: '134', img: '/static/images/GitLab_icon.svg.png'},
+                    { name: 'Postgres-SQL', file: '212', img: '/static/images/post.jpeg'},
+                    { name: 'Mongodb', file: '210', img: '/static/images/download.jpeg'},
+                    { name: 'Sqlite3', file: '186', img: '/static/images/sqlite.jpeg' },
+                    { name: 'Redis', file: '185', img: '/static/images/redis.png' },
+                    { name: 'Sqlite3', file: '186', img: '/static/images/sqlite.jpeg' },
+                    
+                ];
+            } else if (currentCategory === 'lxc') {
+                data = [
+                    { name: 'Postgres-SQL', file: 'postgras.sh', img: '/static/images/post.jpeg' },
+                    { name: 'MYSQL', file: 'mysql.sh', img: '/static/images/development+logo+mysql+icon-1320184807686758112.png' },
+                    { name: 'Mongodb', file: 'mongo.sh', img: '/static/images/download.jpeg'},
+                    { name: 'MariaDB', file: 'mariadb.sh', img: '/static/images/maria.jpeg' },
+                    { name: 'Redis', file: 'redis.sh', img: '/static/images/redis.png' },
+                    { name: 'Sqlite3', file: '220', img: '/static/images/sqlite.jpeg' },
+                    { name: 'Neo4j', file: 'neoj.sh', img: '/static/images/noej.png' },
+                    { name: 'cassandra', file: '164', img: '/static/images/cassandra.png'},
+                    { name: 'Typesense', file: '228', img:'/static/images/typesense.png'},
+                    { name: 'CouchDB', file:'counch.sh', img: '/static/images/CouchDB.png' },
+                    { name: 'grist', file: '227', img: '/static/images/grist.png'},
+                    { name: 'Influxdb', file: '225', img:'/static/images/influxdb.png'},
+                    { name: 'Wordpress', file:'wordpress.sh', img: '/static/images/wordpress.png' },
+                    { name: 'Metube', file: '229', img: '/static/images/metube.png' },
+                    { name: 'nginxproxy', file: '243', img:'/static/images/nginxproxymanager.png'},
+                    { name: 'wireguard', file: '242', img: '/static/images/wireguard.png' },
+                    { name: 'motioneye', file: '241', img: '/static/images/motioneye.png'},
+                    { name: 'rabbitmq', file: '240', img:'/static/images/rabbitmq.png'},
+                    { name: 'prometheus-AlertManager', file: '239', img: '/static/images/prometheus.png' },
+                    { name: 'prometheus', file:'promothese.sh', img: '/static/images/prometheus1.jpeg' },
+                    { name: 'n8n', file: '237', img: '/static/images/n8n.png' },
+                    { name: 'grafana', file:'graphana.sh ', img: '/static/images/grafana.jpeg' },
+                
+                ];
+            }
+
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('icon-card');
+                card.onclick = () => uploadFileToProxmox(item.file);
+
+                const img = document.createElement('img');
+                img.src = item.img;
+                img.alt = item.name;
+
+                const p = document.createElement('p');
+                p.textContent = item.name;
+
+                card.appendChild(img);
+                card.appendChild(p);
+
+                content.appendChild(card);
+            });
+        }
+
+        function uploadFileToProxmox(file) {
+            if (currentCategory === 'lxc') {
+                // If category is 'lxc', redirect to create_lxc page
+                window.location.href = `/create_lxc?file_name=${file}`;
+            } else if (file.endsWith('.iso') || file.endsWith('.img')) {
+                // If file is .iso or .img, upload the file
+                fetch('/upload_file', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ file: file })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        alert(data.message);
+                    } else {
+                        alert('Uploading file: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An issue occurred during the file upload.');
+                });
+            } else {
+                // If the file is not .iso or .img, redirect to the 'create_vm.html' page with the file name as a query parameter
+                window.location.href = `/create_vm?file_name=${file}`;
+            }
+        }
+
+
+        updateContent();
+    </script>
+</body>
+</html>
+
